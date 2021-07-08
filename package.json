@@ -1,0 +1,20 @@
+{
+  "name": "notebook-backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/aalhendi/notebook-backend",
+  "author": "aalhendi <abdulrazaq.alhendi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0",
+    "sequelize-slugify": "^1.5.0"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  }
+}
