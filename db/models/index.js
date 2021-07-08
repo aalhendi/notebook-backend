@@ -44,6 +44,17 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 /* Model Relationship */
-// TODO: Write model relationship
+db.Notebook.hasMany(db.Note, {
+  /*Attributes*/
+  as: "note",
+  // CHECKME: Allow null attribute (?)
+  foreignKey: "noteId",
+});
+
+db.Note.belongsTo(db.Notebook, {
+  /*Attributes*/
+  as: "notebook",
+  foreignKey: "notebookId",
+});
 
 module.exports = db;

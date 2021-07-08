@@ -1,7 +1,11 @@
 /* Imports */
 const express = require("express");
 const cors = require("cors");
-// TODO: Import Routes
+const multer = require("multer");
+const upload = multer();
+
+/* Route Imports */
+const notebookRoutes = require("./API/notebook/routes");
 
 const app = express();
 
@@ -9,12 +13,15 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(upload.array()); //Form data support. But why?
+app.use("/media", express.static("media"));
 
 /* Database */
 const db = require("./db/models");
 
 /* Routes */
-// TODO: Use imported Routes
+app.use("/notebooks", notebookRoutes);
+// TODO: Note routes
 
 /* Error Handling */
 app.use((err, req, res, next) => {
@@ -31,7 +38,7 @@ app.use((req, res, next) => {
 /* Run Method */
 const run = async () => {
   try {
-    await db.sequelize.sync({ force: true });
+    await db.sequelize.sync({ alter: true });
     console.log("Connection to the database successful");
     //Listen @ port 8000
     await app.listen(8000, () => {
