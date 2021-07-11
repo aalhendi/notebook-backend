@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const Note = sequelize.define("Note", {
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: {
           args: true,

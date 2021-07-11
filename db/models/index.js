@@ -47,14 +47,13 @@ db.Sequelize = Sequelize;
 db.Notebook.hasMany(db.Note, {
   /*Attributes*/
   as: "note",
+  foreignKey: "notebookId",
   // CHECKME: Allow null attribute (?)
-  foreignKey: "noteId",
 });
 
 db.Note.belongsTo(db.Notebook, {
   /*Attributes*/
   as: "notebook",
-  foreignKey: "notebookId",
 });
 
 module.exports = db;

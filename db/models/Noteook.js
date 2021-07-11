@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   const Notebook = sequelize.define("Notebook", {
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: {
           args: true,

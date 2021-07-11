@@ -6,6 +6,8 @@ const {
   notebookFind,
   fetchNotebook,
   notebookCreate,
+  noteCreate,
+  notebookFetchNotes,
 } = require("./controllers");
 
 const router = express.Router();
@@ -26,10 +28,16 @@ router.param("notebookId", async (req, res, next, notebookId) => {
 // Notebook list
 router.get("/", notebookFetch);
 
-// Notebook item CHECK ALL
+// Notebook item
 router.get("/:notebookId", notebookFind);
 
 // Create notebook
 router.post("/", notebookCreate);
+
+// Notebook Note items
+router.get("/:notebookId/notes", notebookFetchNotes);
+
+// Create note item in notebook
+router.post("/:notebookId/notes", noteCreate);
 
 module.exports = router;

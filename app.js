@@ -2,10 +2,11 @@
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
-const upload = multer();
+const upload = multer(); // Options here for the upload thing
 
 /* Route Imports */
 const notebookRoutes = require("./API/notebook/routes");
+const noteRoutes = require("./API/note/routes");
 
 const app = express();
 
@@ -21,7 +22,7 @@ const db = require("./db/models");
 
 /* Routes */
 app.use("/notebooks", notebookRoutes);
-// TODO: Note routes
+app.use("/notes", noteRoutes);
 
 /* Error Handling */
 app.use((err, req, res, next) => {
